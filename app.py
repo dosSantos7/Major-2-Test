@@ -11,11 +11,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # we don't want Flask's mo
 app.secret_key = "sudeep"  # needs to be complicated
 
 
-@app.before_first_request
-def create_table():
-    db.create_all()
-
-
 @app.route("/")
 def home():
     return render_template("login.html")
@@ -115,5 +110,4 @@ def user_logs():
 
 
 if __name__ == '__main__':
-    db.init_app(app)
     app.run(port=5000, debug=True)
